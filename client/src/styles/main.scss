@@ -1,0 +1,34 @@
+// Charte graphique
+$primary:   #2B3C4E;
+$secondary: #0099D8;
+$bg-alt:    #F5F5F5;
+$star:      #FFB400;
+$text:      #333333;
+
+// Surcharge variables Bootstrap avant l'import
+$theme-colors: (
+  "primary":   $primary,
+  "secondary": $secondary,
+);
+$body-color:  $text;
+$font-family-base: system-ui, -apple-system, "Segoe UI", sans-serif;
+
+@import "bootstrap/scss/bootstrap";
+
+// Utilitaires globaux
+body {
+  background-color: #fff;
+}
+
+.bg-alt {
+  background-color: $bg-alt;
+}
+
+.text-star {
+  color: $star;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #fff !important;
+}
