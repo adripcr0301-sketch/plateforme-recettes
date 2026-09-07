@@ -1,0 +1,70 @@
+========================================================
+MCD — Plateforme de recettes de cuisine
+Modèle Conceptuel de Données
+========================================================
+
+ENTITÉS ET ATTRIBUTS
+--------------------------------------------------------
+
+USER
+  - id (PK)
+  - prenom
+  - email
+  - mot_de_passe
+  - role (user | admin)
+  - created_at
+
+RECETTE
+  - id (PK)
+  - titre
+  - description
+  - temps_preparation (en minutes)
+  - difficulte (facile | moyen | difficile)
+  - image_url
+  - created_at
+  - user_id (FK → USER)
+  - categorie_id (FK → CATEGORIE)
+
+CATEGORIE
+  - id (PK)
+  - nom
+  - slug
+
+INGREDIENT
+  - id (PK)
+  - nom
+  - unite (g | ml | pièce | cuillère...)
+
+RECETTE_INGREDIENT (table pivot n,n)
+  - recette_id (FK → RECETTE)
+  - ingredient_id (FK → INGREDIENT)
+  - quantite
+
+FAVORI (table pivot n,n)
+  - user_id (FK → USER)
+  - recette_id (FK → RECETTE)
+  - created_at
+
+========================================================
+RELATIONS
+========================================================
+
+USER ──(1,n)──< RECETTE
+  Un utilisateur peut publier plusieurs recettes.
+  Une recette appartient à un seul utilisateur.
+
+RECETTE >──(n,1)── CATEGORIE
+  Une recette appartient à une seule catégorie.
+  Une catégorie regroupe plusieurs recettes.
+
+RECETTE >──(n,n)──< INGREDIENT
+  via table RECETTE_INGREDIENT
+  Une recette contient plusieurs ingrédients.
+  Un ingrédient peut apparaître dans plusieurs recettes.
+
+USER >──(n,n)──< RECETTE
+  via table FAVORI
+  Un utilisateur peut mettre plusieurs recettes en favori.
+  Une recette peut être mise en favori par plusieurs utilisateurs.
+
+========================================================
