@@ -28,7 +28,7 @@ Pages maquettées (Desktop / Tablette / Mobile) :
 | Milestone | Description | Statut |
 |-----------|-------------|--------|
 | 1 — Maquettes Figma | Design system + 6 pages maquettées | ✅ Terminée |
-| 2 — Base de données | MCD, MLD, script SQL, utilisateurs MySQL | 🔜 À faire |
+| 2 — Base de données | MCD, MLD, script SQL, utilisateurs MySQL | ✅ Terminée |
 | 3 — Backend API | Express, Sequelize, JWT, Redis, tests | 🔜 À faire |
 | 4 — Frontend React | Intégration API, auth, favoris, admin | 🔜 À faire |
 | 5 — Déploiement | Railway + Vercel + HTTPS | 🔜 À faire |
