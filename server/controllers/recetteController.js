@@ -1,6 +1,19 @@
 const { Recette, Categorie, User, Ingredient } = require('../models');
 const redisClient = require('../services/redis');
 
+const CACHE_KEY = 'recettes_populaires';
+const CACHE_TTL = 300;
+
+async function cacheGet(key) {
+  try { return await redisClient.get(key); } catch { return null; }
+}
+async function cacheSet(key, ttl, value) {
+  try { await redisClient.setEx(key, ttl, value); } catch { /* Redis absent */ }
+}
+async function cacheDel(key) {
+  try { await redisClient.del(key); } catch { /* Redis absent */ }
+}
+
 /**
  * Get all recipes, with optional category filter.
  * GET /api/recettes
@@ -10,9 +23,9 @@ const getAll = async (req, res) => {
     const where = {};
     if (req.query.categorie_id) where.categorie_id = req.query.categorie_id;
 
-    const cached = await redisClient.get('recettes_populaires');
-    if (cached && !req.query.categorie_id) {
-      return res.json(JSON.parse(cached));
+    if (!req.query.categorie_id) {
+      const cached = await cacheGet(CACHE_KEY);
+      if (cached) return res.json(JSON.parse(cached));
     }
 
     const recettes = await Recette.findAll({
@@ -25,7 +38,7 @@ const getAll = async (req, res) => {
     });
 
     if (!req.query.categorie_id) {
-      await redisClient.setEx('recettes_populaires', 300, JSON.stringify(recettes));
+      await cacheSet(CACHE_KEY, CACHE_TTL, JSON.stringify(recettes));
     }
 
     return res.json(recettes);
@@ -65,7 +78,7 @@ const create = async (req, res) => {
       titre, description, temps_preparation, difficulte, image_url,
       categorie_id, user_id: req.user.id,
     });
-    await redisClient.del('recettes_populaires');
+    await cacheDel(CACHE_KEY);
     return res.status(201).json(recette);
   } catch (err) {
     return res.status(500).json({ message: 'Erreur serveur.', error: err.message });
@@ -86,7 +99,7 @@ const update = async (req, res) => {
     }
 
     await recette.update(req.body);
-    await redisClient.del('recettes_populaires');
+    await cacheDel(CACHE_KEY);
     return res.json(recette);
   } catch (err) {
     return res.status(500).json({ message: 'Erreur serveur.', error: err.message });
@@ -107,7 +120,7 @@ const remove = async (req, res) => {
     }
 
     await recette.destroy();
-    await redisClient.del('recettes_populaires');
+    await cacheDel(CACHE_KEY);
     return res.json({ message: 'Recette supprimée.' });
   } catch (err) {
     return res.status(500).json({ message: 'Erreur serveur.', error: err.message });
