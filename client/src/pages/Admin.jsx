@@ -110,7 +110,7 @@ export default function Admin() {
                 <label className="form-label" htmlFor="difficulte">Difficulté</label>
                 <select id="difficulte" name="difficulte" className="form-select" value={form.difficulte} onChange={handleChange}>
                   <option value="facile">Facile</option>
-                  <option value="intermédiaire">Intermédiaire</option>
+                  <option value="moyen">Moyen</option>
                   <option value="difficile">Difficile</option>
                 </select>
               </div>
