@@ -100,6 +100,11 @@ Le site est disponible sur **http://localhost:5173**
 
 ## Déploiement
 
+| Service | URL |
+|---------|-----|
+| Frontend (Vercel) | https://plateforme-recettes.vercel.app |
+| API (Railway) | https://plateforme-recettes-production.up.railway.app |
+
 - **API + MySQL** : [Railway](https://railway.app) — service Node.js + plugin MySQL
 - **Frontend** : [Vercel](https://vercel.com) — déploiement automatique depuis GitHub
 
