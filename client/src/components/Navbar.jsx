@@ -41,7 +41,7 @@ export default function Navbar() {
                   </li>
                 )}
                 <li className="nav-item">
-                  <button className="btn btn-outline-light btn-sm" onClick={handleLogout}>
+                  <button className="btn btn-light btn-sm" onClick={handleLogout}>
                     Déconnexion
                   </button>
                 </li>
