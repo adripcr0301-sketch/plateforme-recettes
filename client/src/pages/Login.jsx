@@ -20,7 +20,8 @@ export default function Login() {
     setLoading(true);
     try {
       const res = await api.post('/api/auth/login', form);
-      login(res.data.user, res.data.token);
+      const { token, ...userData } = res.data;
+      login(userData, token);
       navigate('/');
     } catch (err) {
       setError(err.response?.data?.message || 'Identifiants incorrects.');

@@ -21,9 +21,9 @@ INSERT INTO categorie (nom, slug) VALUES
 -- Mot de passe en clair : "Test1234!" pour tous
 -- --------------------------------------------------------
 INSERT INTO user (prenom, email, mot_de_passe, role) VALUES
-  ('Admin',   'admin@recettes.fr',  '$2b$10$hashadmin000000000000000000000000000000000000000000000', 'admin'),
-  ('Marie',   'marie@test.fr',      '$2b$10$hashmarie000000000000000000000000000000000000000000000', 'user'),
-  ('Thomas',  'thomas@test.fr',     '$2b$10$hashthomas00000000000000000000000000000000000000000000', 'user');
+  ('Admin',   'admin@recettes.fr',  '$2b$10$Nw7ps5kwr/7qLV8Agbil2OQZ1tok0wyC4OR9nDFr/0N/z0KRBULiq', 'admin'),
+  ('Marie',   'marie@test.fr',      '$2b$10$Nw7ps5kwr/7qLV8Agbil2OQZ1tok0wyC4OR9nDFr/0N/z0KRBULiq', 'user'),
+  ('Thomas',  'thomas@test.fr',     '$2b$10$Nw7ps5kwr/7qLV8Agbil2OQZ1tok0wyC4OR9nDFr/0N/z0KRBULiq', 'user');
 
 -- --------------------------------------------------------
 -- Ingrédients
