@@ -32,4 +32,7 @@ Ingredient.belongsToMany(Recette,  { through: RecetteIngredient, foreignKey: 'in
 User.belongsToMany(Recette, { through: Favori, foreignKey: 'user_id' });
 Recette.belongsToMany(User,  { through: Favori, foreignKey: 'recette_id' });
 
+Favori.belongsTo(Recette, { foreignKey: 'recette_id' });
+Recette.hasMany(Favori,   { foreignKey: 'recette_id' });
+
 module.exports = { sequelize, User, Categorie, Recette, Ingredient, RecetteIngredient, Favori };

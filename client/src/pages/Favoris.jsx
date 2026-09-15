@@ -17,10 +17,10 @@ export default function Favoris() {
       .finally(() => setLoading(false));
   }, [user]);
 
-  async function retirerFavori(id) {
+  async function retirerFavori(recetteId) {
     try {
-      await api.delete(`/api/favoris/${id}`);
-      setFavoris(f => f.filter(r => r.id !== id));
+      await api.delete(`/api/favoris/${recetteId}`);
+      setFavoris(f => f.filter(r => r.recette_id !== recetteId));
     } catch {
       // erreur silencieuse
     }
@@ -41,28 +41,28 @@ export default function Favoris() {
       ) : (
         <div className="row g-4">
           {favoris.map(r => (
-            <div className="col-12 col-sm-6 col-lg-4" key={r.id}>
+            <div className="col-12 col-sm-6 col-lg-4" key={r.recette_id}>
               <article className="card h-100 shadow-sm">
-                {r.image_url && (
+                {r.Recette?.image_url && (
                   <img
-                    src={r.image_url}
+                    src={r.Recette.image_url}
                     className="card-img-top"
-                    alt={r.titre}
+                    alt={r.Recette.titre}
                     style={{ height: '160px', objectFit: 'cover' }}
                   />
                 )}
                 <div className="card-body">
-                  <h2 className="card-title h5">{r.titre}</h2>
-                  <span className="badge" style={{ backgroundColor: '#0099D8' }}>{r.Categorie?.nom}</span>
+                  <h2 className="card-title h5">{r.Recette?.titre}</h2>
+                  <span className="badge" style={{ backgroundColor: '#0099D8' }}>{r.Recette?.Categorie?.nom}</span>
                 </div>
                 <div className="card-footer d-flex gap-2 bg-white border-0">
-                  <Link to={`/recettes/${r.id}`} className="btn btn-outline-primary btn-sm flex-fill">
+                  <Link to={`/recettes/${r.recette_id}`} className="btn btn-outline-primary btn-sm flex-fill">
                     Voir
                   </Link>
                   <button
                     className="btn btn-outline-danger btn-sm"
-                    onClick={() => retirerFavori(r.id)}
-                    aria-label={`Retirer ${r.titre} des favoris`}
+                    onClick={() => retirerFavori(r.recette_id)}
+                    aria-label={`Retirer ${r.Recette?.titre} des favoris`}
                   >
                     ✕
                   </button>
