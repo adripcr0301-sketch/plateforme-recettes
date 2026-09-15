@@ -4,9 +4,9 @@ import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
 const DIFFICULTE_BADGE = {
-  facile:      'success',
-  intermédiaire: 'warning',
-  difficile:   'danger',
+  facile:    'success',
+  moyen:     'warning',
+  difficile: 'danger',
 };
 
 export default function FicheRecette() {
@@ -28,7 +28,7 @@ export default function FicheRecette() {
   useEffect(() => {
     if (!user) return;
     api.get('/api/favoris')
-      .then(res => setFavori(res.data.some(f => f.id === Number(id))))
+      .then(res => setFavori(res.data.some(f => f.recette_id === Number(id))))
       .catch(() => {});
   }, [user, id]);
 

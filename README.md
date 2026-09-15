@@ -41,7 +41,7 @@ Pages maquettées (Desktop / Tablette / Mobile) :
 
 ### Prérequis
 
-- Node.js 18+
+- Node.js 20+
 - MySQL 8
 - Redis (optionnel — le serveur fonctionne sans)
 
