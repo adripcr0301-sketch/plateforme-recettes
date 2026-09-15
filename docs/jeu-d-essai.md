@@ -64,8 +64,8 @@
 | 2 | Saisir les autres champs valides | Champs remplis |
 | 3 | Cliquer sur "S'inscrire" | Message d'erreur "Email déjà utilisé", pas de redirection |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme 
+**Observations :** aucune
 
 ---
 
@@ -81,8 +81,8 @@
 | 3 | Saisir `Test1234!` | Champ rempli (masqué) |
 | 4 | Cliquer sur "Se connecter" | Redirection vers `/`, navbar affiche le prénom "Marie" et le lien "Mes favoris" |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** le bouton deconnexion n'etait pas de la bonne couleur - fixed
 
 ---
 
@@ -96,9 +96,8 @@
 | 2 | Saisir `MauvaisMotDePasse` | Champ rempli |
 | 3 | Cliquer sur "Se connecter" | Message d'erreur "Identifiants incorrects", pas de redirection |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
-
+**Résultat obtenu :** conforme    
+**Observations :** aucunes
 ---
 
 #### T05 — Déconnexion
@@ -110,8 +109,8 @@
 | 1 | Cliquer sur "Déconnexion" dans la navbar | Redirection vers `/login`, navbar affiche "Connexion" / "Inscription" |
 | 2 | Accéder à `/favoris` | Redirection automatique vers `/login` |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** aucune
 
 ---
 
@@ -130,9 +129,8 @@
 | 2 | Observer la section recettes | 5 recettes affichées avec titre, catégorie, difficulté, temps |
 | 3 | Cliquer sur une recette | Redirection vers `/recettes/:id` |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
-
+**Résultat obtenu :** conforme  
+**Observations :**aucune
 ---
 
 #### T07 — Liste des recettes avec recherche
@@ -146,8 +144,8 @@
 | 3 | Effacer la recherche | Les 5 recettes réapparaissent |
 | 4 | Saisir "xyz" (aucun résultat) | Message "Aucune recette trouvée" affiché |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** aucunes
 
 ---
 
@@ -161,8 +159,8 @@
 | 2 | Sélectionner "Toutes" | Les 5 recettes réapparaissent |
 | 3 | Combiner filtre "Entrée" + recherche "niçoise" | Seule "Salade niçoise" est affichée |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** manque 1 lettre a nicoise
 
 ---
 
@@ -177,8 +175,8 @@
 | 3 | Observer les ingrédients | Tableau avec Poulet (1500), Ail (4 gousses), Huile d'olive (30 ml), Sel (5 g) |
 | 4 | Observer le bouton favori (non connecté) | Bouton "☆ Ajouter aux favoris" visible |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** partiellement conforme  
+**Observations :** les couleurs des badges n'étaient pas visible correctement. Correction - $theme-colors écrase complètement les couleurs Bootstrap
 
 ---
 
@@ -191,8 +189,8 @@
 | 1 | Accéder à `/page-inexistante` | Page 404 affichée avec message et lien retour accueil |
 | 2 | Accéder à `/recettes/9999` | Page 404 affichée (recette inexistante) |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme
+**Observations :** aucunes
 
 ---
 
@@ -211,8 +209,9 @@
 | 2 | Cliquer sur le bouton | Bouton passe à "★ Favori" (fond jaune) |
 | 3 | Accéder à `/favoris` | La recette "Moelleux au chocolat" apparaît dans la liste |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** non conforme - corrigé 
+**Observations :** Association Favori.belongsTo(Recette) manquante dans models/index.js → GET /api/favoris retournait une erreur 500 silencieuse
+Favoris.jsx lisait r.titre au lieu de r.Recette.titre (données imbriquées)
 
 ---
 
@@ -227,8 +226,8 @@
 | 2 | Cliquer sur "★ Favori" | Bouton repasse à "☆ Ajouter aux favoris" |
 | 3 | Accéder à `/favoris` | La recette n'apparaît plus dans la liste |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme
+**Observations :** aucunes
 
 ---
 
@@ -242,8 +241,8 @@
 | 1 | Accéder à `/favoris` | Redirection automatique vers `/login` |
 | 2 | Cliquer sur "☆ Ajouter aux favoris" sur une fiche recette | Redirection vers `/login` |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** aucunes
 
 ---
 
@@ -259,8 +258,8 @@
 | 2 | Se connecter avec `marie@test.fr` (rôle user) et accéder à `/admin` | Redirection vers `/` (accès refusé) |
 | 3 | Se connecter avec `admin@recettes.fr` et accéder à `/admin` | Interface admin affichée avec formulaire et liste des recettes |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** Non conforme - corrigé 
+**Observations :** Vercel ne sait pas rediriger /admin vers index.html. Il faut un vercel.json. Corrigé
 
 ---
 
@@ -278,9 +277,8 @@
 | 5 | Remplir "Description" : `Une quiche savoureuse.` | Champ rempli |
 | 6 | Cliquer "Créer" | Message "Recette créée.", recette apparaît dans le tableau |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
-
+**Résultat obtenu :** conforme 
+**Observations :** aucunes
 ---
 
 #### T16 — Modification d'une recette (Admin)
@@ -293,8 +291,8 @@
 | 2 | Changer le titre en `Quiche lorraine maison` | Champ modifié |
 | 3 | Cliquer "Mettre à jour" | Message "Recette mise à jour.", tableau mis à jour |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** aucunes
 
 ---
 
@@ -308,8 +306,8 @@
 | 2 | Cliquer "Annuler" | Recette non supprimée, toujours dans le tableau |
 | 3 | Cliquer à nouveau "Supprimer" puis "OK" | Message "Recette supprimée.", recette disparaît du tableau |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** aucunes
 
 ---
 
@@ -325,8 +323,8 @@
 |-------|--------|-----------------|
 | 1 | GET `https://plateforme-recettes-production.up.railway.app/api/recettes` | Réponse 200, tableau JSON de 5 recettes avec `id`, `titre`, `Categorie`, `Ingredients` |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** aucune
 
 ---
 
@@ -337,8 +335,8 @@
 | 1 | GET `/api/recettes/1` | Réponse 200, objet JSON "Tarte aux pommes" avec ses ingrédients |
 | 2 | GET `/api/recettes/9999` | Réponse 404, message "Recette non trouvée" |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** aucunes
 
 ---
 
@@ -350,8 +348,8 @@
 | 2 | POST `/api/recettes` sans token | Réponse 401 "Token manquant" |
 | 3 | DELETE `/api/recettes/1` sans token | Réponse 401 "Token manquant" |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme  
+**Observations :** aucunes
 
 ---
 
@@ -368,8 +366,8 @@
 | 3 | Page `/recettes` | Les cartes recettes s'affichent en colonne unique |
 | 4 | Fiche recette | Les ingrédients passent sous la description |
 
-**Résultat obtenu :** ☐ Conforme ☐ Non conforme  
-**Observations :** _______________
+**Résultat obtenu :** conforme 
+**Observations :** aucunes
 
 ---
 
