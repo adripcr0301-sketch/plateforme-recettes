@@ -84,7 +84,7 @@ export default function FicheRecette() {
           </div>
 
           <div className="mb-3 d-flex gap-2 flex-wrap">
-            <span className="badge bg-secondary">{recette.Categorie?.nom}</span>
+            <span className="badge" style={{ backgroundColor: '#0099D8' }}>{recette.Categorie?.nom}</span>
             <span className={`badge bg-${DIFFICULTE_BADGE[recette.difficulte] || 'secondary'}`}>
               {recette.difficulte}
             </span>

@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../services/api';
 
+const DIFFICULTE_BADGE = { facile: 'success', moyen: 'warning', difficile: 'danger' };
+
 export default function ListeRecettes() {
   const [recettes, setRecettes]     = useState([]);
   const [categories, setCategories] = useState([]);
@@ -81,8 +83,8 @@ export default function ListeRecettes() {
                 <div className="card-body">
                   <h2 className="card-title h5">{r.titre}</h2>
                   <p className="card-text text-muted small">{r.description?.slice(0, 80)}…</p>
-                  <span className="badge bg-secondary me-2">{r.Categorie?.nom}</span>
-                  <span className="badge bg-light text-dark">{r.difficulte}</span>
+                  <span className="badge me-2" style={{ backgroundColor: '#0099D8' }}>{r.Categorie?.nom}</span>
+                  <span className={`badge bg-${DIFFICULTE_BADGE[r.difficulte] || 'secondary'}`}>{r.difficulte}</span>
                 </div>
                 <div className="card-footer bg-white border-0">
                   <Link to={`/recettes/${r.id}`} className="btn btn-outline-primary btn-sm w-100">

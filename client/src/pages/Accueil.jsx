@@ -53,7 +53,7 @@ export default function Accueil() {
                   <div className="card-body">
                     <h3 className="card-title h5">{r.titre}</h3>
                     <p className="card-text text-muted small">{r.description?.slice(0, 80)}…</p>
-                    <span className="badge bg-secondary me-2">{r.Categorie?.nom}</span>
+                    <span className="badge me-2" style={{ backgroundColor: '#0099D8' }}>{r.Categorie?.nom}</span>
                     <span className="badge bg-light text-dark">{r.temps_preparation} min</span>
                   </div>
                   <div className="card-footer bg-white border-0">

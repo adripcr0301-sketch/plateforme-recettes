@@ -53,7 +53,7 @@ export default function Favoris() {
                 )}
                 <div className="card-body">
                   <h2 className="card-title h5">{r.titre}</h2>
-                  <span className="badge bg-secondary">{r.Categorie?.nom}</span>
+                  <span className="badge" style={{ backgroundColor: '#0099D8' }}>{r.Categorie?.nom}</span>
                 </div>
                 <div className="card-footer d-flex gap-2 bg-white border-0">
                   <Link to={`/recettes/${r.id}`} className="btn btn-outline-primary btn-sm flex-fill">
