@@ -11,7 +11,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="navbar navbar-expand-lg" style={{ backgroundColor: '#2B3C4E' }}>
+    <nav className="navbar navbar-expand-md" style={{ backgroundColor: '#2B3C4E' }}>
       <div className="container">
         <Link className="navbar-brand" to="/">🍳 Plateforme Recettes</Link>
         <button
