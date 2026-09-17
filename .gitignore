@@ -7,6 +7,8 @@ node_modules/
 
 # Fichiers de préparation personnelle
 explications/
+docs/assets/
+docs/plan-diaporama.md
 
 # Sauvegardes BDD
 database/backups/
