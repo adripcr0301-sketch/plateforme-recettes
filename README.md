@@ -35,7 +35,7 @@ Pages maquettées (Desktop / Tablette / Mobile) :
 | 3 — Backend API | Express, Sequelize, JWT, Redis, tests Jest | ✅ Terminée |
 | 4 — Frontend React | Intégration API, auth, favoris, admin, responsive | ✅ Terminée |
 | 5 — Déploiement | Railway + Vercel + HTTPS + README | ✅ Terminée |
-| 6 — Dossier + Diaporama | Dossier de projet + présentation jury | 🔜 À faire |
+| 6 — Dossier + Diaporama | Dossier de projet + présentation jury | ✅ Terminée |
 
 ## Installation locale
 
@@ -134,11 +134,16 @@ plateforme-recettes/
 │   │   ├── services/       # Axios (api.js)
 │   │   └── styles/         # main.scss (Bootstrap + charte)
 │   └── vite.config.js
-├── database/               # Scripts SQL
+├── database/                # Scripts SQL
 │   ├── schema.sql
 │   ├── fixtures.sql
+│   ├── users_mysql.sql      # Création des utilisateurs MySQL dédiés
+│   ├── backup.sh             # Script de sauvegarde de la base
 │   └── MCD.txt
-└── server/                 # Backend Express
+├── docs/                    # Documentation du projet
+│   └── jeu-d-essai.md        # 21 scénarios de test manuels
+├── railway.json              # Configuration de déploiement Railway
+└── server/                  # Backend Express
     ├── controllers/
     ├── middleware/
     ├── models/             # Sequelize
